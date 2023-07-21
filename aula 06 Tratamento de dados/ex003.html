@@ -21,7 +21,8 @@
         var n1 = Number.parseFloat(window.prompt('Digite um número')) //String      
         var n2 = Number.parseFloat(window.prompt('Digite mais um número'))
         var s = n1 + n2
-        window.alert(`A soma dos números ${n1} e ${n3} é ${s}`)
+        window.alert('A soma dos números ' + n1 + ' e ' + n2 + ' é ' + s + '!') // sem concatenação
+        window.alert(`A soma dos números ${n1} e ${n2} é ${s}!`) // com template String
         // (number + number) para adição
         // (string + string) para concatenação
     </script>
