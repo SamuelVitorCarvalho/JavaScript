@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+    <style>
+        body {
+            background: rgb(151, 9, 9);
+            color: white;
+            font: normal 18pt Arial;
+        }
+    </style>
+</head>
+<body>
+    <h1>Iniciando os estudos sobre DOM</h1>
+    <p>Aqui vai o resultado</p>
+    <p>Aprendendo a usar <strong>DOM</strong> em JavaScript.</p>
+    <div id="msg">Clique em mim</div>
+
+    <script>
+
+        var p1 = window.document.getElementsByTagName('p')[0] // O [0] se refere ao primeiro 'p'
+        var corpo = window.document.body
+        var d = window.document.getElementById ('msg')
+
+        window.document.write('Está escrito assim: ' + p1.innerText) // "innerText" é o texto que está dentro, o valor
+        //"innerHTML" já traz a msm formatação do HTML
+
+        corpo.style.background = 'black'
+
+        d.style.background = 'green'
+        d.innerText = 'Estou aguardando' // Muda o valor da variável, no caso o texto dela (innerText)
+
+        /* var d = window.document.querySelector('div#msg') */
+
+        /* d.style.background = 'blue' */
+
+    </script>
+
+</body>
+</html>
