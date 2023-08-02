@@ -17,12 +17,14 @@
     <p>Aqui vai o resultado</p>
     <p>Aprendendo a usar <strong>DOM</strong> em JavaScript.</p>
     <div id="msg">Clique em mim</div>
+    <div class="obs">Aqui está uma observação: Tem como mudar o HTML e as CSS atráves do JS.</div>
 
     <script>
 
         var p1 = window.document.getElementsByTagName('p')[0] // O [0] se refere ao primeiro 'p'
         var corpo = window.document.body
         var d = window.document.getElementById ('msg')
+        var e = window.document.querySelector('div.obs')
 
         window.document.write('Está escrito assim: ' + p1.innerText) // "innerText" é o texto que está dentro, o valor
         //"innerHTML" já traz a msm formatação do HTML
@@ -32,9 +34,7 @@
         d.style.background = 'green'
         d.innerText = 'Estou aguardando' // Muda o valor da variável, no caso o texto dela (innerText)
 
-        /* var d = window.document.querySelector('div#msg') */
-
-        /* d.style.background = 'blue' */
+        e.style.background = 'blue'
 
     </script>
 
