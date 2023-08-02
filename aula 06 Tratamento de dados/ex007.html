@@ -30,11 +30,13 @@
         function somar () {
             var tn1 = window.document.getElementById('txtn1')
             var tn2 = window.document.getElementById('txtn2')
-            var res = window.document.getElementById('res')
-            var n1 = Number(tn1.value)
+            // var res = window.document.getElementById('res') ? pq funciona sem ela?
+            var n1 = Number(tn1.value) //'value' é pq é um input (é oq está escrito dentro do input)
             var n2 = Number(tn2.value)
             var s = n1 + n2
             res.innerHTML = `A soma entre ${n1} e ${n2} é igual a <strong>${s}</strong> !`
+            tn1.value = "" // volta o valor de tn1 e tn2 para 0.
+            tn2.value = ""
         }
     </script>
 </body>
