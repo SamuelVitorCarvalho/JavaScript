@@ -13,14 +13,24 @@
 
     <script>
         function descobrir() {
-            var txp = window.document.getElementById('pais')
+            var txp = window.document.getElementById('pais') // pega o input
+            var txres = (txp.value) // pega o valor q esta no input
+
+            /*    
+            var txres = (window.document.getElementById('pais').value) Posso fazer assim tbm ao inves de criar uma variavel para o input e depois uma variavel para o valor do input!
+            */
+
             var res = window.document.getElementById('res')
-            if (txp == 'Brasil') {
-                res.innerHTML = `<p>Você é Brasileiro!</p>`
+            if (txres == 'Brasil') {
+                res.innerHTML = '<p>Você é Brasileiro</p>'
+                res.style.background = 'green'
+                res.style.width = '300px'
             } else {
-                res.innerHTML = `<p>Você é Estrangeiro!</p>`
+                res.innerHTML = '<p>Você é estrangeiro</p>'
+                res.style.background = 'red'
+                res.style.width = '300px'
             }
-            txp.value = ""
+            txp.value = "" // zera o valor colocado no input
         }
     </script>
 </body>
