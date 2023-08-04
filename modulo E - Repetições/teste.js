@@ -1,3 +1,5 @@
+// Repetição while (enquanto) e do..while (faça até que)
+
 var c = 1
 var b = 1
 
