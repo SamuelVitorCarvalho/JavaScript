@@ -11,6 +11,11 @@
     <input type="button" value="Verificar" onclick="descobrir()">
     <div id="res"></div>
 
+    <h1>Que horas são?</h1>
+    Agora são extamente: 
+    <input type="button" value="Descobrir" onclick="horas()">
+    <div id="horario"></div>
+
     <script>
         function descobrir() {
             var txp = window.document.getElementById('pais') // pega o input
@@ -31,6 +36,20 @@
                 res.style.width = '300px'
             }
             txp.value = "" // zera o valor colocado no input
+        }
+
+        function horas() {
+            var hora = new Date()
+            var agora = hora.getHours()
+            var relogio = window.document.getElementById('horario')
+            relogio.innerHTML = `<p>${agora} horas.</p>`
+            if (agora < 12) {
+                relogio.innerHTML += 'Bom dia'
+            } else if (agora < 18) {
+                relogio.innerHTML += 'Boa tarde'
+            } else {
+                relogio.innerHTML += 'Boa noite'
+            }
         }
     </script>
 </body>
