@@ -4,7 +4,7 @@ function contar() {
     let passo = document.getElementById('txtp')
     let res = document.getElementById('res')
 
-    if (ini.value.length == 0 || fim.value.length == 0) {
+    if (ini.value.length == 0 || fim.value.length == 0) { // O length é o comprimento da string, nesse caso se o usuário não digitar um número aparece o ERRO
         res.innerHTML = 'Impossível contar!'
     } else {
         res.innerHTML = 'Contando: <br>'
