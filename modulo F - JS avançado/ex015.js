@@ -18,5 +18,7 @@ for(let pos in num) {
     console.log(`A posição ${pos} tem o valor ${num[pos]}`)
 }
 
+// Mostra a posição de um valor que vc quer 
+
 var ind = num.indexOf(5)
 console.log(`O valor está na posição ${ind}`)
