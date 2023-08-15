@@ -11,8 +11,6 @@ function isNumero(n) {
     }
 }
 
-[a, b, c, d]
-
 function inLista(n, l) {
     if (l.indexOf(Number(n)) != -1) { // se o num ou n estiver em alguma posição da lista retorna a posição dele, caso contrário, ele retorna -1 fazendo com que a condição != seja false
         return true
@@ -68,7 +66,7 @@ function finalizar() {
 
         res.innerHTML = ''
         res.innerHTML += `<p>Ao todo, temos ${tot} números cadastrados.</p>`
-        res.innerHTML += `<p>O maoir valor é o ${maior}.</p>`
+        res.innerHTML += `<p>O maior valor é o ${maior}.</p>`
         res.innerHTML += `<p>O menor valor é o ${menor}.</p>`
         res.innerHTML += `<p>A soma de todos os valores informados resulta em ${soma}.</p>`
         res.innerHTML += `<p>A media de todos os valores informados resulta em ${media}.</p>`
