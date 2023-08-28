@@ -1,7 +1,11 @@
+// Declaração das variáveis gerais
+
 let text = document.getElementById('text')
 let button = document.getElementById('button')
 let circle = document.getElementById('circle')
-let colorValue = text.value.toLowerCase()
+
+// Código sem usar Objetos 
+
 /*
 function changeColor() {
     let color = text.value.toLowerCase()
@@ -20,6 +24,8 @@ function changeColor() {
     text.focus()
 }
 */
+
+// Código usando o Objetos
 
 const colors = {
     color1: "blue",
@@ -40,6 +46,7 @@ function setColor(c) {
 }
 
 function changeColor() {
+    let colorValue = text.value.toLowerCase()
     if (text.value.length == 0) {
         window.alert('Please provide a color name!')
     } else if (setColor(colorValue)) {
@@ -47,4 +54,7 @@ function changeColor() {
     } else {
         window.alert('Color invalid!')
     }
+    text.value = ''
+    text.focus()
+    console.log(colorValue)
 }
