@@ -52,7 +52,7 @@ function changeColor() {
     } else if (setColor(colorValue)) {
         document.getElementById('circle').style.background = colorValue
     } else {
-        window.alert('Color invalid!')
+        window.alert('Please enter a valid color')
     }
     text.value = ''
     text.focus()
