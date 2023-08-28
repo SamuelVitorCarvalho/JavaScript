@@ -1,7 +1,7 @@
 let text = document.getElementById('text')
 let button = document.getElementById('button')
 let circle = document.getElementById('circle')
-
+let colorValue = text.value.toLowerCase()
 /*
 function changeColor() {
     let color = text.value.toLowerCase()
@@ -28,11 +28,22 @@ const colors = {
     color4: "white"
 }
 
+function setColor(c) {
+    for(i in colors) {
+        var color = colors[i]
+
+        if(color == c) {
+            return true
+        }
+    }
+    return false
+}
+
 function changeColor() {
     if (text.value.length == 0) {
         window.alert('Please provide a color name!')
-    } else if (Object.values(colors).includes(text)) {
-        document.getElementById('circle').style.background = text
+    } else if (setColor(colorValue)) {
+        document.getElementById('circle').style.background = colorValue
     } else {
         window.alert('Color invalid!')
     }
