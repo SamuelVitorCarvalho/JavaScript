@@ -30,6 +30,18 @@ section#itens {
     flex-direction: column;
 }
 
+#res {
+    margin-top: 30px;
+}
+
+#res > p {
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
 input#button {
     border-radius: 10px;
     border: none;
