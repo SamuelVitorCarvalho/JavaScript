@@ -30,7 +30,7 @@ function changeColor() {
 const colors = {
     color1: "blue",
     color2: "red",
-    color3: "orange",
+    color3: "Orange",
     color4: "white"
 }
 
@@ -38,7 +38,7 @@ function setColor(c) {
     for(i in colors) {
         var color = colors[i]
 
-        if(color == c) {
+        if(color.toLowerCase() == c.toLowerCase()) { // Aqui eu comparo os dois lados da igualdade, convertendo o texto para letras minusculas
             return true
         }
     }
@@ -46,7 +46,7 @@ function setColor(c) {
 }
 
 function changeColor() {
-    let colorValue = text.value.toLowerCase()
+    let colorValue = text.value;
     if (text.value.length == 0) {
         window.alert('Please provide a color name!')
     } else if (setColor(colorValue)) {

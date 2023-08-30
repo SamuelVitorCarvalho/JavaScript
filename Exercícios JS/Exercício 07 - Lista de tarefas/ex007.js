@@ -8,13 +8,14 @@ var vetor = [
     'Clean House',
     'Clean PC',
     'Washe dishes',
+    'Buy coffe',
 ]
 
 function adicionar() {
     var texto = `${vetor[t]}`
-    res.innerHTML += `<p id="p_task${itens.length}">${texto} <button id="remove" onclick="remove(${itens.length})">ok</button></p>`
+    res.innerHTML += `<p id="p_task${itens.length}">${texto} <button id="remove" onclick="remove(this)">ok</button></p>` // o "this" serve para pegar o elemento HTML como parâmetro
     t++
-    if(t == 3){
+    if(t == vetor.length){
         t = 0
     }
     itens.push(i)
@@ -22,7 +23,10 @@ function adicionar() {
 }
 
 function remove(d) {
-    var del = document.getElementById(`p_task${d}`)
-    del.remove()
+    console.log(d)
+    d.parentElement.remove() //Parent é o pai do elemento, no caso o pai do botão é o parágrefo
     i--
 }
+
+
+// CRUD -> Estudar
