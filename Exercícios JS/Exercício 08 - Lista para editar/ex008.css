@@ -27,27 +27,63 @@ section#itens {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    flex-direction: row;
+    gap: 25px;
 }
 
 #res {
     margin-top: 30px;
 }
 
-input#button {
-    border-radius: 10px;
+input#txt_task {
     border: none;
-    width: 125px;
-    height: 30px;
-    padding: 5px;
+    border-radius: 10px;
+    padding: 8px;
+}
+
+div#button {
     cursor: pointer;
+    padding: 5px;
+    background-color: rgb(43, 43, 43);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
 
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-input#button:hover {
-    background-color: rgb(153, 153, 153);
+div#button:hover {
+    background-color: rgb(68, 68, 68);
     transition: .2s;
+}
+
+div#newTask {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+    width: 300px;
+    padding: 5px;
+}
+
+div#deledit {
+    display: flex;
+    align-items: end;
+    gap: 30px;
+}
+
+div#editTask:hover, div#deleteTask:hover {
+    cursor: pointer;
+    padding: 5px;
+    background-color: rgb(43, 43, 43);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
