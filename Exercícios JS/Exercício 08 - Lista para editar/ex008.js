@@ -1,5 +1,6 @@
 let inputTask = document.getElementById('txt_task')
 let res = document.getElementById('res')
+let oldInput;
 var itens = []
 
 function adicionar() {
@@ -25,11 +26,12 @@ function deleteTask(del) {
 }
 
 function editTask(ed) {
-    //tentativa 1
-    // var taskName = document.getElementById('name')
-    // var name = taskName.textContent
+    var titleTask = ed.parentElement.parentElement.querySelector('p').textContent
+    let elempai = ed.parentElement.parentElement.querySelector('div')
+    let newInput = document.createElement('input')
 
-    // tentativa 2
-    // var taskName = ed.parentElement.parentElement.textContent
-    // console.log(taskName)
+    newInput.setAttribute("class", 'editInput')
+    elempai.insertBefore(newInput, elempai.firstChild) // o evento insertBefore serve para inserir o elemento antes de algum outro elemento, por exemplo, uma div
+    newInput.value = titleTask
+    ed.parentElement.parentElement.querySelector('p').remove()
 }
