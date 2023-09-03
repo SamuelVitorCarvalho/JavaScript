@@ -96,3 +96,8 @@ div#editTask:hover, div#deleteTask:hover {
     justify-content: center;
     width: 300px;
 }
+
+.buttons {
+    display: flex;
+    gap: 30px;
+}
