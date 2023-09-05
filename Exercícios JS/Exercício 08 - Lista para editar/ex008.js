@@ -1,7 +1,8 @@
 let inputTask = document.getElementById('txt_task')
 let res = document.getElementById('res')
-let oldInput;
 var itens = []
+
+// inputTask.readOnly = true
 
 function adicionar() {
     var taskName = inputTask.value
@@ -38,7 +39,7 @@ function editTask(ed) {
     saveCancel.setAttribute("class", 'saveCancel')
     buttons.setAttribute("class", 'buttons')
 
-    buttons.innerHTML += `<span class="material-symbols-outlined">done</span> <span class="material-symbols-outlined">close</span>`  
+    buttons.innerHTML += `<span class="material-symbols-outlined" onclick="saveTask()">done</span> <span class="material-symbols-outlined" onclick="cancelTask">close</span>`  
     saveCancel.appendChild(buttons)
 
     elempai.insertBefore(newInput, elempai.firstChild) // o evento insertBefore serve para inserir o elemento antes de algum outro elemento, por exemplo, uma div
