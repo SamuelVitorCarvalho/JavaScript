@@ -10,6 +10,9 @@ function adicionar() {
     let newTask = inputTask.value
     itens.push({task: newTask})
 
+    //colocar o valor dentro do storage do navegador
+   
+
     //chama a função 
     atualizar()
 
@@ -18,6 +21,9 @@ function adicionar() {
 }
 
 function atualizar () { // Serve para criar os "res" a aprtir do itens[]
+    
+
+
     // Esvaziar todo o conteudo da section#res
     res.innerHTML = ''
 
