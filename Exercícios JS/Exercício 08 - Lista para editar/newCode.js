@@ -83,3 +83,5 @@ var vetor = [
 
 console.log(vetor[1].n[0].nu)
 */
+
+//session storege e local storage

@@ -1,6 +1,16 @@
 let inputTask = document.getElementById('txt_task')
 let res = document.getElementById('res')
 var itens = []
+var storage = {
+    itens: [],
+    add: function (value) {
+        this.itens.push(value)
+    },
+    /* Mostrar itens na tela */
+    show: function () {
+        console.log(this.itens)
+    },
+}
 
 // inputTask.readOnly = true
 
@@ -18,6 +28,8 @@ function adicionar() {
             </div>
         </div>
     </div>`
+    storage.add(taskName)
+    storage.show()
     inputTask.value = ''
     inputTask.focus()
 }
@@ -49,3 +61,5 @@ function editTask(ed) {
     removeButton.remove()
     elempai.insertBefore(saveCancel, elempai.secondChild)
 }
+
+document.getElementById
