@@ -77,9 +77,19 @@ div#deledit {
     width: 300px;
 }
 
+div#deledit span {
+    margin: 0px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 div#editTask:hover, div#deleteTask:hover {
     cursor: pointer;
     padding: 5px;
+    margin: 0px;
     background-color: rgb(43, 43, 43);
     border-radius: 50%;
     width: 30px;
@@ -88,6 +98,8 @@ div#editTask:hover, div#deleteTask:hover {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    transition: .2s;
 }
 
 input#taskName {
