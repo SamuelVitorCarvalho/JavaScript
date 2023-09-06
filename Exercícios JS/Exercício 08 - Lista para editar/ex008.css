@@ -59,7 +59,7 @@ div#button:hover {
     transition: .2s;
 }
 
-div#newTask {
+div.newTask {
     display: flex;
     flex-direction: row;
     align-items: center;
