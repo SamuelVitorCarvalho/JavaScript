@@ -2,16 +2,22 @@
 
 let inputTask = document.getElementById('txt_task')
 let res = document.getElementById('res')
+var values = localStorage.getItem('Tarefas') // o localStorage trata todos os valores como string
 var itens = []
+
+// Colocar os valores que já estão no localStorage dentro do vetor itens[]
+if (values != '') {
+    itens = JSON.parse(values) // converte para vetor de objetos
+}
+
+// Chamo a função atualizar() para q as tarefas sejam exibidas na tela
+atualizar()
 
 // Função para adicionar uma nova tarefa
 
 function adicionar() {
     let newTask = inputTask.value
     itens.push({task: newTask})
-
-    //colocar o valor dentro do storage do navegador
-   
 
     //chama a função 
     atualizar()
@@ -21,8 +27,6 @@ function adicionar() {
 }
 
 function atualizar () { // Serve para criar os "res" a aprtir do itens[]
-    
-
 
     // Esvaziar todo o conteudo da section#res
     res.innerHTML = ''
@@ -41,6 +45,9 @@ function atualizar () { // Serve para criar os "res" a aprtir do itens[]
             </div>
         </div>`
     }
+
+    // Colocar os novos valores de itens[] dentro do localStorage
+    localStorage.setItem('Tarefas', JSON.stringify(itens)) // converte o itens[] em uma string para q a função setItem reconheça
 }
 
 // Função pra editar a tarefa
@@ -90,4 +97,4 @@ var vetor = [
 console.log(vetor[1].n[0].nu)
 */
 
-//session storege e local storage
+//session storage e local storage
