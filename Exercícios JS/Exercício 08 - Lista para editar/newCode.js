@@ -1,4 +1,4 @@
-// Declaração dos Objetos Gerais
+// Declaração dos variáveis Globais
 
 let inputTask = document.getElementById('txt_task')
 let res = document.getElementById('res')
