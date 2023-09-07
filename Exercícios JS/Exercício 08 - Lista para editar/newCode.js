@@ -13,14 +13,24 @@ if (values != '') {
 // Chamo a função atualizar() para q as tarefas sejam exibidas na tela
 atualizar()
 
-// Função para adicionar uma nova tarefa
+// Função para adicionar uma nova tarefa a partir do botão "Enter"
+
+inputTask.addEventListener("keypress", function(event) { // Serve para chamar a função adicionar() quando eu apertar a tecla "Enter"
+    if (event.keyCode === 13) { // O "13" se refere ao código da tecla "Enter"
+        adicionar()
+}
+});
 
 function adicionar() {
     let newTask = inputTask.value
-    itens.push({task: newTask})
+    if (newTask.length == 0) {
+        window.alert('Insira uma tarefa!')
+    } else {
+        itens.push({task: newTask})
 
-    //chama a função 
-    atualizar()
+        //chama a função 
+        atualizar()
+    }
 
     inputTask.value = ''
     inputTask.focus()
