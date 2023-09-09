@@ -15,11 +15,12 @@ atualizar()
 
 // Função para adicionar uma nova tarefa a partir do botão "Enter"
 
-inputTask.addEventListener("keypress", function(event) { // Serve para chamar a função adicionar() quando eu apertar a tecla "Enter"
+inputTask.addEventListener("keypress", enter);
+
+function enter(event) { // Serve para chamar a função adicionar() quando eu apertar a tecla "Enter"
     if (event.keyCode === 13) { // O "13" se refere ao código da tecla "Enter"
         adicionar()
-}
-});
+}}
 
 function adicionar() {
     let newTask = inputTask.value
@@ -108,3 +109,5 @@ console.log(vetor[1].n[0].nu)
 */
 
 //session storage e local storage
+// call back e função recursiva
+// filter e map e find e .recuse no vetor
