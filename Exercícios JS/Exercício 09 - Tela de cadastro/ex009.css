@@ -1,5 +1,7 @@
 @charset "UTF-8";
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;700&display=swap');
+
 * {
     padding: 0px;
     margin: 0px;
@@ -17,18 +19,21 @@ a {
     --cor3: #6CA4F0;
     --cor4: #60B2DB;
     --cor5: #60E5F1;
+    --font: 'Poppins', sans-serif;
 }
 
 body {
     display: flex;
     flex-direction: row;
+    font-family: var(--font);
+    font-size: .8em;
 }
 
 header {
     background-color: white;
     display: flex;
     flex-direction: column;
-    width: 200px;
+    width: 300px;
     height: 96.5vh;
     padding: 10px;
 }
@@ -49,21 +54,139 @@ header > #logo {
     width: 30px;
 }
 
-#pages {
+#pages div.icon-text {
     display: flex;
-    flex-direction: column;
-    gap: 50px;
-    padding: 20px;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    gap: 15px;
+    padding: 10px 10px 10px 20px;
+    margin-bottom: 10px;
 }
 
-#pages > a > span {
-    width: 30px;
-    height: 30px;
+div.icon-text span {
+    color: var(--cor4);
+    /* background-color: #91caff; 
+    padding: 5px;
+    border-radius: 50%; */
+}
+
+#pages div.icon-text a {
+    color: var(--cor4);
+    font-weight: 500;
 }
 
 main {
     background-color: var(--cor1);
-    padding: 10px;
-    width: 80vw;
+    padding: 50px;
+    width: 100vw;
     height: 96.5vh;
+}
+
+section#home {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10px;
+}
+
+#home > h1 {
+    font-weight: 500;
+    color: rgb(105, 105, 105);
+}
+
+#home > #button-add-newProduct {
+    padding: 10px;
+    background-color: var(--cor4);
+    border-radius: 20px;
+    font-size: x-small;
+    color: white;
+}
+
+.description {
+    width: 300px;
+}
+
+section#products > #info {
+    display: flex;
+    flex-direction: row;
+    color: rgb(122, 122, 122);
+    background-color: #6ca3f031;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.137);
+}
+
+#item .newProduct {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+#item .newProduct img {
+    max-width: 30px
+}
+
+#add-del {
+    display: flex;
+    gap: 25px;
+}
+
+/* Página de criar um produto */
+
+h1#title {
+    color: #60B2DB; 
+    text-shadow: 2px 1px 1px rgba(0, 0, 0, 0.137); border-bottom: 1px solid rgba(122, 122, 122, 0.185); 
+    width: 30vw;
+}
+
+section#infoProduct {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 10px;
+}
+
+input {
+    border: none;
+    background-color: #60b2db33;
+    border-radius: 10px;
+    padding: 5px;
+    margin-top: 10px;
+}
+
+section#finishCancel {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 50px;
+}
+
+section#finishCancel > #finish, #cancel {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+    width: 100px;
+    border-radius: 20px;
+}
+
+#finish:hover {
+    background-color: rgb(42, 179, 42);
+    color: white;
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+#cancel:hover {
+    background-color: rgb(179, 42, 42);
+    color: white;
+    cursor: pointer;
+
+    transition: .2s;
 }

@@ -14,24 +14,48 @@
             <p>Product Admin</p>
         </div>
         <div id="pages">
-            <a href="index.html"><span class="material-symbols-outlined">cottage</span>HOME</a>
-            <a href="pageCadasterProduct.html"><span class="material-symbols-outlined">shopping_bag</span>PRODUCTS</a>
+            <div class="icon-text" style="border-left: 2px solid #60B2DB;">
+                <span class="material-symbols-outlined">cottage</span>
+                <a href="index.html">HOME</a>
+            </div>
+            <div class="icon-text">
+                <span style="color: darkgray;" class="material-symbols-outlined">shopping_bag</span>
+                <a href="pageCadasterProduct.html" style="color: gray;">PRODUCTS</a>
+            </div>
         </div>
     </header>
     <main>
         <section id="home">
             <h1>Product Inventory</h1>
-            <div id="add">
+            <div id="button-add-newProduct">
+                + ADD PRODUCT
                 <!-- botão de adicionar novos produtos, criar outra página -->
             </div>
         </section>
         <section id="products">
             <div id="info">
-                <p>Picture</p>
-                <p>Product Name</p>
-                <p>Price</p>
+                <div class="description">Picture</div>
+                <div class="description">Product Name</div>
+                <div class="description">Price</div>
             </div>
             <div id="item">
+                <!--  Esse será o formato de div q conterá cada produto! -->
+                <div class="newProduct">
+                    <div class="description">
+                        <img src="img/logoW.png" alt="">
+                    </div>
+                    <div class="description">
+                        nome do produto
+                    </div>
+                    <div class="description">
+                        R$ 280,00
+                    </div>
+                    <div id="add-del">
+                        <span class="material-symbols-outlined" id="button-add">add</span>
+                        <span class="material-symbols-outlined" id="button-del">delete</span>
+                    </div>
+                </div> 
+                
                 <!-- 
                     Foto
                     Nome do produto
@@ -39,7 +63,6 @@
                     botão de excluir
                     botão de adiocionar ao cadastro (vai para a outra página)
                  -->
-                <!-- Aqui vão todos os produtos q já foram e ainda serão cadastrados -->
             </div>
         </section>
     </main>
