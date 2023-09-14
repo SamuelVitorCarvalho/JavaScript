@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>Cadastro de Produtos</title>
 </head>
-<body>
+<body onload="atualizar()">
     <header>
         <div id="logo">
             <img src="img/logoW.png" alt="logo" id="img-logo">
@@ -41,23 +41,6 @@
                 <div class="description">Price</div>
             </div>
             <div id="item">
-                <!--  Esse será o formato de div q conterá cada produto! -->
-                <div class="newProduct">
-                    <div class="description">
-                        <img src="img/logoW.png" alt="">
-                    </div>
-                    <div class="description">
-                        nome do produto
-                    </div>
-                    <div class="description">
-                        R$ 280,00
-                    </div>
-                    <div id="add-del">
-                        <span class="material-symbols-outlined" id="button-add" onclick="buttonAddToRegister()">add</span>
-                        <span class="material-symbols-outlined" id="button-del" onclick="buttonDel()">delete</span>
-                    </div>
-                </div> 
-                
                 <!-- 
                     Foto
                     Nome do produto
@@ -75,3 +58,20 @@
 <!-- DESAFIO! 
     Fazer uma tela de cadastro de produtos onde haverá vários produtos para serem cadastrados e outra tela para mostrar os produtos cadstrados (salvando no localStorage) com a foto, o nome e o preço do produto, nessa segunda tela terá a possibilidade de editar, remover ou adicionar um novo produto do zero, editando seus dados no localStorage
 -->
+
+<!--  Esse será o formato de div q conterá cada produto! -->
+<!-- <div class="newProduct">
+    <div class="description">
+        <img src="img/logoW.png" alt="">
+    </div>
+    <div class="description">
+        nome do produto
+    </div>
+    <div class="description">
+        R$ 280,00
+    </div>
+    <div id="add-del">
+        <span class="material-symbols-outlined" id="button-add" onclick="buttonAddToRegister()">add</span>
+        <span class="material-symbols-outlined" id="button-del" onclick="buttonDel()">delete</span>
+    </div>
+</div>  -->

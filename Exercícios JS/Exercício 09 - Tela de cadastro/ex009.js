@@ -22,19 +22,47 @@ let productShow = document.getElementById('item') // index
 let productRegister = document.getElementById('itemRegister') // página de produtos cadastrados
 
 // Arrays e localStorage
+values = localStorage.getItem('Itens')
 let products = []
+
+if(values) {
+    products = JSON.parse(values)
+}
 
 // Função para add um novo produto
 function addProduct() {
     // foto escolhida aqui
     let productName = inputName.value
     let productPrice = Number(inputPrice.value)
-
+    products.push({name: productName, price: productPrice})
     
+    inputName.value = ''
+    inputPrice.value = ''
 }
 
 // Função de atualizar
+function atualizar() {
+    
+    for(i = 0; i < products.length; i++) {
+        productShow.innerHTML += `<div class="newProduct">
+                <div class="description">
+                    <img src="" alt="product img">
+                </div>
+                <div class="description">
+                    ${products[i].name}
+                </div>
+                <div class="description">
+                    ${products[i].price}
+                </div>
+                <div id="add-del">
+                    <span class="material-symbols-outlined" id="button-add" onclick="buttonAddToRegister()">add</span>
+                    <span class="material-symbols-outlined" id="button-del" onclick="buttonDel()">delete</span>
+                </div>
+            </div>`
+    }
 
+    localStorage.setItem('Itens', JSON.stringify(products))
+}
 
 // Função de deletar 
 
