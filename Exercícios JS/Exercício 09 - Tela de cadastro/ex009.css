@@ -96,12 +96,13 @@ section#home {
     color: rgb(105, 105, 105);
 }
 
-#home > #button-add-newProduct {
+#home > a > #button-add-newProduct {
     padding: 10px;
     background-color: var(--cor4);
     border-radius: 20px;
     font-size: x-small;
     color: white;
+    cursor: pointer;
 }
 
 .description {
@@ -131,6 +132,10 @@ section#products > #info {
 #add-del {
     display: flex;
     gap: 25px;
+}
+
+#button-add, #button-del {
+    cursor: pointer;
 }
 
 /* Página de criar um produto */

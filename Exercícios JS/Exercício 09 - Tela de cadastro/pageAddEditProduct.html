@@ -31,25 +31,29 @@
         <section id="infoProduct">
             <div>
                 <p>Image Product</p>
-                <!-- Colocar um upload de fotos -->
+                <input type="file" name="uploadPhoto" id="uploadPhoto">
             </div>
             <div>
                 <p>Name Product</p>
-                <input type="text" name="" id="">
+                <input type="text" name="inputName" id="inputName">
             </div>
             <div>
                 <p>Price Product</p>
-                <input type="number" name="" id="">
+                <input type="number" name="inputPrice" id="inputPrice">
             </div>
         </section>
         <section id="finishCancel">
-            <div id="finish">
+            <div id="finish" onclick="addProduct()">
                 <span class="material-symbols-outlined">check</span>
                 <p>Save</p>
             </div>
-            <div id="cancel">
-                <span class="material-symbols-outlined">close</span><p>Cancel</p>
-            </div>
+            <a href="index.html">
+                <div id="cancel">
+                    <span class="material-symbols-outlined">close</span><p>Cancel</p>
+                </div>
+            </a>
         </section>
+
+        <script src="ex009.js"></script>
 </body>
 </html>

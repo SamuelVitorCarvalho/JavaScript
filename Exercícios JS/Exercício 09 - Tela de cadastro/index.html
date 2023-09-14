@@ -27,10 +27,12 @@
     <main>
         <section id="home">
             <h1>Product Inventory</h1>
-            <div id="button-add-newProduct">
-                + ADD PRODUCT
-                <!-- botão de adicionar novos produtos, criar outra página -->
-            </div>
+            <a href="pageAddEditProduct.html">
+                <div id="button-add-newProduct">
+                    + ADD PRODUCT
+                    <!-- botão de adicionar novos produtos, criar outra página -->
+                </div>
+            </a>
         </section>
         <section id="products">
             <div id="info">
@@ -51,8 +53,8 @@
                         R$ 280,00
                     </div>
                     <div id="add-del">
-                        <span class="material-symbols-outlined" id="button-add">add</span>
-                        <span class="material-symbols-outlined" id="button-del">delete</span>
+                        <span class="material-symbols-outlined" id="button-add" onclick="buttonAddToRegister()">add</span>
+                        <span class="material-symbols-outlined" id="button-del" onclick="buttonDel()">delete</span>
                     </div>
                 </div> 
                 
@@ -71,5 +73,5 @@
 </html>
 
 <!-- DESAFIO! 
-    Fazer uma tela de cadastro de produtos onde haverá vários produtos para serem cadastrados e outra tela para mostrar os produtos cadstrados (salvando no localStorage) com a foto, o nome e o preço do produto, nessa segunda tala terá a possibilidade de editar, remover ou adicionar um novo produto do zero, editando seus dados no localStorage
+    Fazer uma tela de cadastro de produtos onde haverá vários produtos para serem cadastrados e outra tela para mostrar os produtos cadstrados (salvando no localStorage) com a foto, o nome e o preço do produto, nessa segunda tela terá a possibilidade de editar, remover ou adicionar um novo produto do zero, editando seus dados no localStorage
 -->
