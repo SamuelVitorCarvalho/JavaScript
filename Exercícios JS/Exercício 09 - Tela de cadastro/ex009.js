@@ -1,10 +1,10 @@
 /* 
     O que o programa irá fazer?
 
-    1. Adicionar novos produtos na home
-    2. Registrar esses produtos na página de registro (colocar atraves do localStorage)
-    3. Fazer a somatória dos preços e a contagem dos produtos registrados
-    4. Ter a possibilidade de editar, criar ou deletar um produto atráves da tela de criação de um novo produto (CRUD)
+    1. Adicionar novos produtos na home - OK!
+    2. Registrar esses produtos na página de registro (colocar atraves do localStorage) - 
+    3. Fazer a somatória dos preços e a contagem dos produtos registrados - 
+    4. Ter a possibilidade de editar, criar ou deletar um produto atráves da tela de criação de um novo produto (CRUD) - 
 */
 
 // Variáveis Globais
@@ -35,14 +35,13 @@ function addProduct() {
     let productName = inputName.value
     let productPrice = Number(inputPrice.value)
     products.push({name: productName, price: productPrice})
-    
+    localStorage.setItem('Itens', JSON.stringify(products))
     inputName.value = ''
     inputPrice.value = ''
 }
 
 // Função de atualizar
 function atualizar() {
-    
     for(i = 0; i < products.length; i++) {
         productShow.innerHTML += `<div class="newProduct">
                 <div class="description">
@@ -60,10 +59,11 @@ function atualizar() {
                 </div>
             </div>`
     }
-
-    localStorage.setItem('Itens', JSON.stringify(products))
 }
 
+function atualizarProductsRegistred() {
+    // ao clicar no botao adicionar
+}
 // Função de deletar 
 
 
