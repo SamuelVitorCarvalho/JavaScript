@@ -23,10 +23,16 @@ let productRegister = document.getElementById('itemRegister') // página de prod
 
 // Arrays e localStorage
 values = localStorage.getItem('Itens')
+valuesProductsRegistred = localStorage.getItem('Itens Cadastrados')
 let products = []
+let productsRegistred = []
 
 if(values) {
     products = JSON.parse(values)
+}
+
+if(valuesProductsRegistred) {
+    productsRegistred = JSON.parse(valuesProductsRegistred)
 }
 
 // Função para add um novo produto
@@ -42,8 +48,9 @@ function addProduct() {
 
 // Função de atualizar
 function atualizar() {
+    productShow.innerHTML = ''
     for(i = 0; i < products.length; i++) {
-        productShow.innerHTML += `<div class="newProduct">
+        productShow.innerHTML += `<div id="newProduct${i}">
                 <div class="description">
                     <img src="" alt="product img">
                 </div>
@@ -54,17 +61,49 @@ function atualizar() {
                     ${products[i].price}
                 </div>
                 <div id="add-del">
-                    <span class="material-symbols-outlined" id="button-add" onclick="buttonAddToRegister()">add</span>
-                    <span class="material-symbols-outlined" id="button-del" onclick="buttonDel()">delete</span>
+                    <span class="material-symbols-outlined" id="button-add" onclick="buttonAddToRegister(this)">add</span>
+                    <span class="material-symbols-outlined" id="button-del" onclick="delProduct(this)">delete</span>
+                </div>
+            </div>`
+    }
+    localStorage.setItem('Itens', JSON.stringify(products))
+}
+
+function buttonAddToRegister(batr) { // ao clicar no botao adicionar
+    let divButton = batr.parentElement.parentElement.id
+    let numDiv = divButton.replace(/[^0-9]/g, '')
+    productsRegistred.push({name: products[numDiv].name, price: products[numDiv].price})
+    localStorage.setItem('Itens Cadastrados', JSON.stringify(productsRegistred))
+}
+
+function atualizarProductsRegistred() {
+    productRegister.innerHTML = ''
+
+    for(i = 0; i < productsRegistred.length; i++) {
+        productRegister.innerHTML += `<div id="newProduct${i}">
+                <div class="description">
+                    <img src="" alt="product img">
+                </div>
+                <div class="description">
+                    ${productsRegistred[i].name}
+                </div>
+                <div class="description">
+                    ${productsRegistred[i].price}
+                </div>
+                <div id="add-del">
+                    <span class="material-symbols-outlined" id="button-add" onclick="buttonAddToRegister(this)">add</span>
+                    <span class="material-symbols-outlined" id="button-del" onclick="delProduct(this)">delete</span>
                 </div>
             </div>`
     }
 }
 
-function atualizarProductsRegistred() {
-    // ao clicar no botao adicionar
-}
 // Função de deletar 
-
+function delProduct(d) {
+    let del = d.parentElement.parentElement.id
+    let num = del.replace(/[^0-9]/g, '')
+    products.splice(num, 1)
+    atualizar()
+}
 
 // Função de editar
