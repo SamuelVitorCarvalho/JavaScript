@@ -119,13 +119,13 @@ section#products > #info {
     box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.137);
 }
 
-#item .newProduct {
+#item .newProduct, #itemRegister .newProduct {
     display: flex;
     align-items: center;
     padding: 10px;
 }
 
-#item .newProduct img {
+#item .newProduct img, #itemRegister .newProduct img {
     max-width: 30px
 }
 
@@ -134,7 +134,7 @@ section#products > #info {
     gap: 25px;
 }
 
-#button-add, #button-del {
+#button-add, #button-del, #button-edit {
     cursor: pointer;
 }
 
