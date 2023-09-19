@@ -2,9 +2,9 @@
     O que o programa irá fazer?
 
     1. Adicionar novos produtos na home - OK!
-    2. Registrar esses produtos na página de registro (colocar atraves do localStorage) - 
+    2. Registrar esses produtos na página de registro (colocar atraves do localStorage) - OK!
     3. Fazer a somatória dos preços e a contagem dos produtos registrados - 
-    4. Ter a possibilidade de editar, criar ou deletar um produto atráves da tela de criação de um novo produto (CRUD) - 
+    4. Ter a possibilidade de editar, criar ou deletar um produto atráves da tela de criação de um novo produto (CRUD) - OK!
 */
 
 // Variáveis Globais
@@ -37,7 +37,7 @@ if(valuesProductsRegistred) {
 
 // Função para add um novo produto
 function addProduct() {
-    // foto escolhida aqui
+    // colocar a foto aqui
     let productName = inputName.value
     let productPrice = Number(inputPrice.value)
     products.push({name: productName, price: productPrice})
@@ -46,13 +46,13 @@ function addProduct() {
     inputPrice.value = ''
 }
 
-// Função de atualizar
+// Função de atualizar no index
 function atualizar() {
     productShow.innerHTML = ''
     for(i = 0; i < products.length; i++) {
         productShow.innerHTML += `<div id="newProduct${i}" class="newProduct">
                 <div class="description">
-                    <img src="" alt="product img">
+                    <img src="" alt="product img" id="uploadImg">
                 </div>
                 <div class="description">
                     ${products[i].name}
@@ -69,6 +69,7 @@ function atualizar() {
     localStorage.setItem('Itens', JSON.stringify(products))
 }
 
+// Função para adicionar os itens no array dos produtos registrados
 function buttonAddToRegister(batr) { // ao clicar no botao adicionar
     let divButton = batr.parentElement.parentElement.id
     let numDiv = divButton.replace(/[^0-9]/g, '')
@@ -76,6 +77,7 @@ function buttonAddToRegister(batr) { // ao clicar no botao adicionar
     localStorage.setItem('Itens Cadastrados', JSON.stringify(productsRegistred))
 }
 
+// Função de atualizar na página de produtos registrados
 function atualizarProductsRegistred() {
     productRegister.innerHTML = ''
 
@@ -85,14 +87,14 @@ function atualizarProductsRegistred() {
                     <img src="" alt="product img">
                 </div>
                 <div class="description">
-                    <input type="text" name="inputNewName" id="inputNewName" value="${productsRegistred[i].name}" readonly>
+                    <input type="text" name="inputNewName" class="inputNewName inputInativo" value="${productsRegistred[i].name}" readonly>
                 </div>
                 <div class="description">
-                    <input type="number" name="inputNewPrice" id="inputNewPrice" value="${productsRegistred[i].price}" readonly>
+                    <input type="number" name="inputNewPrice" class="inputNewPrice inputInativo" value="${productsRegistred[i].price}" readonly>
                 </div>
                 <div id="add-del">
-                    <span class="material-symbols-outlined" id="button-edit" onclick="editProduct(this)">edit</span>
-                    <span class="material-symbols-outlined" id="button-del" onclick="delProductCadastred(this)">delete</span>
+                    <span class="material-symbols-outlined" id="button-edit" class="buts" onclick="editProduct(this)">edit</span>
+                    <span class="material-symbols-outlined" id="button-del" class="buts" onclick="delProductCadastred(this)">delete</span>
                 </div>
             </div>`
     }
@@ -117,15 +119,21 @@ function delProductCadastred(d) {
 
 // Função de editar nome e preço
 function editProduct(ed) {
-    newInputName = ed.parentElement.parentElement.querySelector('input#inputNewName')
-    newInputPrice = ed.parentElement.parentElement.querySelector('input#inputNewPrice')
+    newInputName = ed.parentElement.parentElement.querySelector('input.inputNewName')
+    newInputPrice = ed.parentElement.parentElement.querySelector('input.inputNewPrice')
     saveBut = ed.parentElement.querySelector('span')
+    let inativo = 'inputInativo' // esse é o nome da classe que já está no input
+    let ativo = 'inputAtivo'
     
     if(newInputName.readOnly == true) {
         newInputName.readOnly = false
         newInputPrice.readOnly = false
         saveBut.textContent = 'done'
         newInputName.focus()
+        newInputName.classList.add(ativo) // adiciona uma nova classe ao input
+        newInputName.classList.remove(inativo) // remove a classe já criada nele
+        newInputPrice.classList.add(ativo)
+        newInputPrice.classList.remove(inativo)
     } else {
         newInputName.readOnly = true
         saveBut.textContent = 'edit'

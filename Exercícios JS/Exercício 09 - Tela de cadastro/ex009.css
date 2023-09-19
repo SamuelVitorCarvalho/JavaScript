@@ -138,6 +138,29 @@ section#products > #info {
     cursor: pointer;
 }
 
+/* Estilização para quando o input está inativo (readOnly ativo) */
+
+#itemRegister .inputInativo {
+    background-color: transparent;
+    margin-top: 0px;
+}
+
+#itemRegister .inputInativo:focus {
+    outline: none;
+}
+
+#itemRegister .inputInativo:hover {
+    cursor: default;
+}
+
+/* Estilização para quando o input está ativo (readOnly inativo) */
+
+#itemRegister .inputAtivo {
+    background-color: #60B2DB;
+    margin-top: 0px;
+    transition: .2s;
+}
+
 /* Página de criar um produto */
 
 h1#title {
