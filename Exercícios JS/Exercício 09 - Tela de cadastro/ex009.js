@@ -5,6 +5,14 @@
     2. Registrar esses produtos na página de registro (colocar atraves do localStorage) - OK!
     3. Fazer a somatória dos preços e a contagem dos produtos registrados - 
     4. Ter a possibilidade de editar, criar ou deletar um produto atráves da tela de criação de um novo produto (CRUD) - OK!
+
+    Coisas a corrigir: 
+
+    1. Colocar o editar dentro da tela de adicionar novo produto
+    2. Colocar a imagem como um input, e nesse input a imagem vai ser uma URL. Se o usuário não colocar uma imagem, carregar uma imagem padrão.
+    3. Fazer as validações (não adicionar um produto duas vezes)
+    4. Fazer uma animação de load
+    5. Colocar a frase "Não há produtos cadastrados / registrados"
 */
 
 // Variáveis Globais
@@ -81,10 +89,12 @@ function buttonAddToRegister(batr) { // ao clicar no botao adicionar
     let numDiv = divButton.replace(/[^0-9]/g, '')
     productsRegistred.push({name: products[numDiv].name, price: products[numDiv].price})
     localStorage.setItem('Itens Cadastrados', JSON.stringify(productsRegistred))
-    batr.style.animation = 'animationButtonAdd 1s ease-in-out'
+    batr.parentElement.parentElement.style.animation = 'animationButtonAdd 1s ease-in-out'
+    setTimeout(function(){
+        batr.parentElement.parentElement.style.animation = 'none'
+    }, 1000)
 }
 
-// Função de atualizar na página de produtos registrados
 function atualizarProductsRegistred() {
     productRegister.innerHTML = ''
 
@@ -118,11 +128,10 @@ function delProduct(d) {
     }, 1)
     setTimeout(function() {
         atualizar()
+    }, 1000)
+    setTimeout(function() {
         productShow.style.animation = 'atualizarSubida 1s ease-in-out'
     }, 1000)
-    // setTimeout(function() {
-    //     productShow.style.animation = 'atualizarSubida 1s ease-in-out'
-    // }, 1100)
     setTimeout(function() {
         d.parentElement.parentElement.style.animation = 'none'
         productShow.style.animation = 'none'
@@ -134,7 +143,19 @@ function delProductCadastred(d) {
     let del = d.parentElement.parentElement.id
     let num = del.replace(/[^0-9]/g, '')
     productsRegistred.splice(num, 1)
-    atualizarProductsRegistred()
+    setTimeout(function() {
+        d.parentElement.parentElement.style.animation = 'animationButtonDel 1s ease-in-out'
+    }, 1)
+    setTimeout(function() {
+        atualizarProductsRegistred()
+    }, 1000)
+    setTimeout(function() {
+        productRegister.style.animation = 'atualizarSubida 1s ease-in-out'
+    }, 1000)
+    setTimeout(function() {
+        d.parentElement.parentElement.style.animation = 'none'
+        productRegister.style.animation = 'none'
+    }, 2000)
 }
 
 // Função de editar nome e preço
