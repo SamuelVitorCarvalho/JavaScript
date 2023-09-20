@@ -38,9 +38,15 @@ if(valuesProductsRegistred) {
 // Função para add um novo produto
 function addProduct() {
     // colocar a foto aqui
+    let reader = new FileReader()
+    reader.onload = function(e) {
+        let imgLoad = e.target.result
+        console.log(imgLoad)
+    }
+
     let productName = inputName.value
     let productPrice = Number(inputPrice.value)
-    products.push({name: productName, price: productPrice})
+    products.push({ name: productName, price: productPrice})
     localStorage.setItem('Itens', JSON.stringify(products))
     inputName.value = ''
     inputPrice.value = ''
@@ -58,7 +64,7 @@ function atualizar() {
                     ${products[i].name}
                 </div>
                 <div class="description">
-                    ${products[i].price}
+                    R$ ${products[i].price}
                 </div>
                 <div id="add-del">
                     <span class="material-symbols-outlined" id="button-add" onclick="buttonAddToRegister(this)">add</span>
@@ -75,6 +81,7 @@ function buttonAddToRegister(batr) { // ao clicar no botao adicionar
     let numDiv = divButton.replace(/[^0-9]/g, '')
     productsRegistred.push({name: products[numDiv].name, price: products[numDiv].price})
     localStorage.setItem('Itens Cadastrados', JSON.stringify(productsRegistred))
+    batr.style.animation = 'animationButtonAdd 1s ease-in-out'
 }
 
 // Função de atualizar na página de produtos registrados
@@ -90,7 +97,7 @@ function atualizarProductsRegistred() {
                     <input type="text" name="inputNewName" class="inputNewName inputInativo" value="${productsRegistred[i].name}" readonly>
                 </div>
                 <div class="description">
-                    <input type="number" name="inputNewPrice" class="inputNewPrice inputInativo" value="${productsRegistred[i].price}" readonly>
+                    R$ <input type="number" name="inputNewPrice" class="inputNewPrice inputInativo" value="${productsRegistred[i].price}" readonly>
                 </div>
                 <div id="add-del">
                     <span class="material-symbols-outlined" id="button-edit" class="buts" onclick="editProduct(this)">edit</span>
@@ -106,7 +113,20 @@ function delProduct(d) {
     let del = d.parentElement.parentElement.id
     let num = del.replace(/[^0-9]/g, '')
     products.splice(num, 1)
-    atualizar()
+    setTimeout(function() {
+        d.parentElement.parentElement.style.animation = 'animationButtonDel 1s ease-in-out'
+    }, 1)
+    setTimeout(function() {
+        atualizar()
+        productShow.style.animation = 'atualizarSubida 1s ease-in-out'
+    }, 1000)
+    // setTimeout(function() {
+    //     productShow.style.animation = 'atualizarSubida 1s ease-in-out'
+    // }, 1100)
+    setTimeout(function() {
+        d.parentElement.parentElement.style.animation = 'none'
+        productShow.style.animation = 'none'
+    }, 2000)
 }
 
 // Função de deletar para o pageCadesterProduct
