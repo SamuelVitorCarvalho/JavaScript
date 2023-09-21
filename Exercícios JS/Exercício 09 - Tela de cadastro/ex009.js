@@ -9,10 +9,10 @@
     Coisas a corrigir: 
 
     1. Colocar o editar dentro da tela de adicionar novo produto
-    2. Colocar a imagem como um input, e nesse input a imagem vai ser uma URL. Se o usuário não colocar uma imagem, carregar uma imagem padrão.
+    2. Colocar a imagem como um input, e nesse input a imagem vai ser uma URL. Se o usuário não colocar uma imagem, carregar uma imagem padrão. - OK!
     3. Fazer as validações (não adicionar um produto duas vezes)
     4. Fazer uma animação de load
-    5. Colocar a frase "Não há produtos cadastrados / registrados"
+    5. Colocar a frase "Não há produtos cadastrados / registrados" - OK!
 */
 
 // Variáveis Globais
@@ -45,40 +45,44 @@ if(valuesProductsRegistred) {
 
 // Função para add um novo produto
 function addProduct() {
-    // colocar a foto aqui
-    let reader = new FileReader()
-    reader.onload = function(e) {
-        let imgLoad = e.target.result
-        console.log(imgLoad)
-    }
-
+    let productPhoto = inputPhoto.value
     let productName = inputName.value
     let productPrice = Number(inputPrice.value)
-    products.push({ name: productName, price: productPrice})
+
+    if(productPhoto.length == 0) {
+        productPhoto = 'https://w7.pngwing.com/pngs/446/214/png-transparent-computer-icons-new-product-development-service-window-others-miscellaneous-service-window.png'
+    }
+    
+    products.push({photo: productPhoto, name: productName, price: productPrice})
     localStorage.setItem('Itens', JSON.stringify(products))
     inputName.value = ''
     inputPrice.value = ''
+    inputPhoto.value = ''
 }
 
 // Função de atualizar no index
 function atualizar() {
-    productShow.innerHTML = ''
-    for(i = 0; i < products.length; i++) {
+    if(products.length == 0) {
+        productShow.innerHTML = `<p class="notProducts">There are not products here, please, click on button "+ADD PRODUCT" and add a new product!</p>`
+    } else {
+        productShow.innerHTML = ''
+        for(i = 0; i < products.length; i++) {
         productShow.innerHTML += `<div id="newProduct${i}" class="newProduct">
-                <div class="description">
-                    <img src="" alt="product img" id="uploadImg">
-                </div>
-                <div class="description">
-                    ${products[i].name}
-                </div>
-                <div class="description">
-                    R$ ${products[i].price}
-                </div>
-                <div id="add-del">
-                    <span class="material-symbols-outlined" id="button-add" onclick="buttonAddToRegister(this)">add</span>
-                    <span class="material-symbols-outlined" id="button-del" onclick="delProduct(this)">delete</span>
-                </div>
-            </div>`
+            <div class="description">
+                <img src="${products[i].photo}" alt="product img" id="uploadImg">
+            </div>
+            <div class="description">
+                ${products[i].name}
+            </div>
+            <div class="description">
+                R$ ${products[i].price}
+            </div>
+            <div id="add-del">
+                <span class="material-symbols-outlined" id="button-add" onclick="buttonAddToRegister(this)">add</span>
+                <span class="material-symbols-outlined" id="button-del" onclick="delProduct(this)">delete</span>
+            </div>
+        </div>`
+        }
     }
     localStorage.setItem('Itens', JSON.stringify(products))
 }
@@ -87,7 +91,7 @@ function atualizar() {
 function buttonAddToRegister(batr) { // ao clicar no botao adicionar
     let divButton = batr.parentElement.parentElement.id
     let numDiv = divButton.replace(/[^0-9]/g, '')
-    productsRegistred.push({name: products[numDiv].name, price: products[numDiv].price})
+    productsRegistred.push({photo: products[numDiv].photo, name: products[numDiv].name, price: products[numDiv].price})
     localStorage.setItem('Itens Cadastrados', JSON.stringify(productsRegistred))
     batr.parentElement.parentElement.style.animation = 'animationButtonAdd 1s ease-in-out'
     setTimeout(function(){
@@ -96,12 +100,14 @@ function buttonAddToRegister(batr) { // ao clicar no botao adicionar
 }
 
 function atualizarProductsRegistred() {
-    productRegister.innerHTML = ''
-
-    for(i = 0; i < productsRegistred.length; i++) {
-        productRegister.innerHTML += `<div id="newProduct${i}" class="newProduct">
+    if(productsRegistred.length == 0) {
+        productRegister.innerHTML = `<p class="notProducts">There are not products here, please, click on button "+ADD PRODUCT" and add a new product!</p>`
+    } else {
+        productRegister.innerHTML = ''
+        for(i = 0; i < productsRegistred.length; i++) {
+            productRegister.innerHTML += `<div id="newProduct${i}" class="newProduct">
                 <div class="description">
-                    <img src="" alt="product img">
+                    <img src="${productsRegistred[i].photo}" alt="product img">
                 </div>
                 <div class="description">
                     <input type="text" name="inputNewName" class="inputNewName inputInativo" value="${productsRegistred[i].name}" readonly>
@@ -114,7 +120,9 @@ function atualizarProductsRegistred() {
                     <span class="material-symbols-outlined" id="button-del" class="buts" onclick="delProductCadastred(this)">delete</span>
                 </div>
             </div>`
+        }
     }
+    
     localStorage.setItem('Itens Cadastrados', JSON.stringify(productsRegistred))
 }
 

@@ -125,7 +125,15 @@ section#products > #info {
 }
 
 #item .newProduct img, #itemRegister .newProduct img {
-    max-width: 30px
+    max-width: 50px
+}
+
+#item p, #itemRegister p {
+    color: rgb(122, 122, 122);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
 }
 
 #add-del {
@@ -219,6 +227,7 @@ input {
     border-radius: 10px;
     padding: 5px;
     margin-top: 10px;
+    width: 250px;
 }
 
 section#finishCancel {
