@@ -8,7 +8,7 @@
 
     Coisas a corrigir: 
 
-    1. Colocar o editar dentro da tela de adicionar novo produto
+    1. Colocar o editar dentro da tela de adicionar novo produto - OK!
     2. Colocar a imagem como um input, e nesse input a imagem vai ser uma URL. Se o usuário não colocar uma imagem, carregar uma imagem padrão. - OK!
     3. Fazer as validações (não adicionar um produto duas vezes)
     4. Fazer uma animação de load - OK!
