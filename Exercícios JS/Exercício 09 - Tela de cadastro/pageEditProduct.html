@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="ex009.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <title>Product</title>
+</head>
+<body onload="newEdit()">
+    <header>
+        <div id="logo">
+            <img src="img/logoW.png" alt="logo" id="img-logo">
+            <p>Product Admin</p>
+        </div>
+        <div id="pages">
+            <div class="icon-text">
+                <span style="color: darkgray;" class="material-symbols-outlined">cottage</span>
+                <a href="index.html" style="color: gray;">HOME</a>
+            </div>
+            <div class="icon-text">
+                <span style="color: darkgray;" class="material-symbols-outlined">shopping_bag</span>
+                <a href="pageCadasterProduct.html" style="color: gray;">PRODUCTS</a>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section id="home">
+            <h1 id="title">Product</h1>
+        </section>
+        <section id="infoProduct">
+            <div>
+                <p>Image Product</p>
+                <input type="text" name="uploadPhoto" id="editPhoto" placeholder="Put your image in format URL">
+            </div>
+            <div>
+                <p>Name Product</p>
+                <input type="text" name="inputName" id="editName">
+            </div>
+            <div>
+                <p>Price Product</p>
+                <input type="number" name="inputPrice" id="editPrice">
+            </div>
+        </section>
+        <section id="finishCancel">
+            <div id="finish" onclick="saveEdit()">
+                <span class="material-symbols-outlined">check</span>
+                <p>Save</p>
+            </div>
+            <a href="index.html">
+                <div id="cancel">
+                    <span class="material-symbols-outlined">close</span><p>Cancel</p>
+                </div>
+            </a>
+        </section>
+
+        <script src="ex009.js"></script>
+</body>
+</html>

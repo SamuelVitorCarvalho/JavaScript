@@ -11,7 +11,7 @@
     1. Colocar o editar dentro da tela de adicionar novo produto
     2. Colocar a imagem como um input, e nesse input a imagem vai ser uma URL. Se o usuário não colocar uma imagem, carregar uma imagem padrão. - OK!
     3. Fazer as validações (não adicionar um produto duas vezes)
-    4. Fazer uma animação de load
+    4. Fazer uma animação de load - OK!
     5. Colocar a frase "Não há produtos cadastrados / registrados" - OK!
 */
 
@@ -24,6 +24,9 @@ const inputPhoto = document.getElementById('uploadPhoto')
 const inputName = document.getElementById('inputName')
 const inputPrice = document.getElementById('inputPrice')
 const buttonSave = document.getElementById('finish')
+const editPhoto = document.getElementById('editPhoto')
+const editName = document.getElementById('editName')
+const editPrice = document.getElementById('editPrice')
 
 // Div's de resposta
 let productShow = document.getElementById('item') // index
@@ -32,8 +35,10 @@ let productRegister = document.getElementById('itemRegister') // página de prod
 // Arrays e localStorage
 values = localStorage.getItem('Itens')
 valuesProductsRegistred = localStorage.getItem('Itens Cadastrados')
+valuesProductEdit = localStorage.getItem('Editar')
 let products = []
 let productsRegistred = []
+let productEdit = []
 
 if(values) {
     products = JSON.parse(values)
@@ -41,6 +46,10 @@ if(values) {
 
 if(valuesProductsRegistred) {
     productsRegistred = JSON.parse(valuesProductsRegistred)
+}
+
+if(valuesProductEdit) {
+    productEdit = JSON.parse(valuesProductEdit)
 }
 
 // Função para add um novo produto
@@ -63,7 +72,7 @@ function addProduct() {
 // Função de atualizar no index
 function atualizar() {
     if(products.length == 0) {
-        productShow.innerHTML = `<p class="notProducts">There are not products here, please, click on button "+ADD PRODUCT" and add a new product!</p>`
+        productShow.innerHTML = `<p class="notProducts">There are not products here, please, click on button  <strong>"+ADD PRODUCT"</strong>  and add a new product!</p>`
     } else {
         productShow.innerHTML = ''
         for(i = 0; i < products.length; i++) {
@@ -101,13 +110,13 @@ function buttonAddToRegister(batr) { // ao clicar no botao adicionar
 
 function atualizarProductsRegistred() {
     if(productsRegistred.length == 0) {
-        productRegister.innerHTML = `<p class="notProducts">There are not products here, please, click on button "+ADD PRODUCT" and add a new product!</p>`
+        productRegister.innerHTML = `<p class="notProducts">There are not products here, please, click on button  <strong>"+ADD PRODUCT"</strong>  and add a new product!</p>`
     } else {
         productRegister.innerHTML = ''
         for(i = 0; i < productsRegistred.length; i++) {
             productRegister.innerHTML += `<div id="newProduct${i}" class="newProduct">
                 <div class="description">
-                    <img src="${productsRegistred[i].photo}" alt="product img">
+                    <img src="${productsRegistred[i].photo}" alt="product img" class="photo">
                 </div>
                 <div class="description">
                     <input type="text" name="inputNewName" class="inputNewName inputInativo" value="${productsRegistred[i].name}" readonly>
@@ -166,7 +175,47 @@ function delProductCadastred(d) {
     }, 2000)
 }
 
+// Função de editar um produto
+function editProduct(ed) {
+    newPhoto = ed.parentElement.parentElement.querySelector('img.photo').src
+    newInputName = ed.parentElement.parentElement.querySelector('input.inputNewName').value
+    newInputPrice = ed.parentElement.parentElement.querySelector('input.inputNewPrice').value
+    productEdit.push({photo: newPhoto, name: newInputName, price: newInputPrice})
+    localStorage.setItem('Editar', JSON.stringify(productEdit))
+    let edit = ed.parentElement.parentElement.id
+    let num = edit.replace(/[^0-9]/g, '')
+    window.location.href = `pageEditProduct.html?id=${num}` // passou a var num por URL, usando o "?" e depois declara uma variavel id que recebe a var num
+}
+
+function newEdit() {
+    //Coloca os valores no input
+    editPhoto.value = productEdit[0].photo
+    editName.value = productEdit[0].name
+    editPrice.value = productEdit[0].price
+}
+
+function saveEdit() {
+    let newPhoto = editPhoto.value
+    let newName = editName.value
+    let newPrice = editPrice.value
+
+    urlParams = new URLSearchParams(window.location.search) //pega todas as variáveis da URL
+    let num = Number(urlParams.get('id')) // pega a variavel "id" da URL
+
+    productsRegistred[num].photo = newPhoto
+    productsRegistred[num].name = newName
+    productsRegistred[num].price = newPrice
+
+    localStorage.setItem('Itens Cadastrados', JSON.stringify(productsRegistred))
+
+    let editar = "Editar"
+    localStorage.removeItem(editar)
+
+    window.location.href = 'pageCadasterProduct.html'
+}
+
 // Função de editar nome e preço
+/*
 function editProduct(ed) {
     newInputName = ed.parentElement.parentElement.querySelector('input.inputNewName')
     newInputPrice = ed.parentElement.parentElement.querySelector('input.inputNewPrice')
@@ -195,3 +244,4 @@ function editProduct(ed) {
         atualizarProductsRegistred()
     }
 }
+*/
