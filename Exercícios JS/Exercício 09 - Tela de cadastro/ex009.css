@@ -133,6 +133,13 @@ section#products > #info {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#item p.load, #itemRegister p.load {
+    color: rgb(122, 122, 122);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 300px;
 }
 
@@ -196,14 +203,6 @@ section#products > #info {
 
 #itemRegister .inputInativo:hover {
     cursor: default;
-}
-
-/* Estilização para quando o input está ativo (readOnly inativo) */
-
-#itemRegister .inputAtivo {
-    background-color: #60B2DB;
-    margin-top: 0px;
-    transition: .2s;
 }
 
 /* Página de criar um produto */

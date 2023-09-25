@@ -10,7 +10,7 @@
 
     1. Colocar o editar dentro da tela de adicionar novo produto - OK!
     2. Colocar a imagem como um input, e nesse input a imagem vai ser uma URL. Se o usuário não colocar uma imagem, carregar uma imagem padrão. - OK!
-    3. Fazer as validações (não adicionar um produto duas vezes)
+    3. Fazer as validações (não adicionar um produto duas vezes) - OK!
     4. Fazer uma animação de load - OK!
     5. Colocar a frase "Não há produtos cadastrados / registrados" - OK!
 */
@@ -81,10 +81,10 @@ function atualizar() {
                 <img src="${products[i].photo}" alt="product img" id="uploadImg">
             </div>
             <div class="description">
-                ${products[i].name}
+                <p class="name">${products[i].name}</p>
             </div>
             <div class="description">
-                R$ ${products[i].price}
+                <p class="price">R$ ${products[i].price}</p>
             </div>
             <div id="add-del">
                 <span class="material-symbols-outlined" id="button-add" onclick="buttonAddToRegister(this)">add</span>
@@ -96,16 +96,33 @@ function atualizar() {
     localStorage.setItem('Itens', JSON.stringify(products))
 }
 
+// função para saber se um produto já está registrado (para não registrar o msm produto 2 vezes!)
+function isList(text) {
+    for (i in productsRegistred) {
+        let name = productsRegistred[i].name
+
+        if(name == text) {
+            return true
+        }
+    }
+    return false
+}
+
 // Função para adicionar os itens no array dos produtos registrados
 function buttonAddToRegister(batr) { // ao clicar no botao adicionar
-    let divButton = batr.parentElement.parentElement.id
-    let numDiv = divButton.replace(/[^0-9]/g, '')
-    productsRegistred.push({photo: products[numDiv].photo, name: products[numDiv].name, price: products[numDiv].price})
-    localStorage.setItem('Itens Cadastrados', JSON.stringify(productsRegistred))
-    batr.parentElement.parentElement.style.animation = 'animationButtonAdd 1s ease-in-out'
-    setTimeout(function(){
-        batr.parentElement.parentElement.style.animation = 'none'
-    }, 1000)
+    let test = batr.parentElement.parentElement.querySelector('p.name')
+    if(isList(test.innerHTML) == true) {
+        window.alert('This product is already registered!')
+    } else {
+        let divButton = batr.parentElement.parentElement.id
+        let numDiv = divButton.replace(/[^0-9]/g, '')
+        productsRegistred.push({photo: products[numDiv].photo, name: products[numDiv].name, price: products[numDiv].price})
+        localStorage.setItem('Itens Cadastrados', JSON.stringify(productsRegistred))
+        batr.parentElement.parentElement.style.animation = 'animationButtonAdd 1s ease-in-out'
+        setTimeout(function(){
+            batr.parentElement.parentElement.style.animation = 'none'
+        }, 1000)
+    }
 }
 
 function atualizarProductsRegistred() {
@@ -199,7 +216,7 @@ function saveEdit() {
     let newName = editName.value
     let newPrice = editPrice.value
 
-    urlParams = new URLSearchParams(window.location.search) //pega todas as variáveis da URL
+    let urlParams = new URLSearchParams(window.location.search) //pega todas as variáveis da URL
     let num = Number(urlParams.get('id')) // pega a variavel "id" da URL
 
     productsRegistred[num].photo = newPhoto
