@@ -98,6 +98,13 @@ function atualizar() {
 
 // função para saber se um produto já está registrado (para não registrar o msm produto 2 vezes!)
 function isList(text) {
+
+    let hasSome = productsRegistred.some((product) => {
+        return product.name == text
+    })
+    return hasSome
+
+    /*
     for (i in productsRegistred) {
         let name = productsRegistred[i].name
 
@@ -106,11 +113,22 @@ function isList(text) {
         }
     }
     return false
+
+    ---------------------------------
+    toglle serve para mudar o valor de true para false e vice versa, negando a própria variável
+
+    let ischecked = true
+
+    function toglleChecked() {
+        ischecked = !ischecked
+    }
+    */
 }
 
 // Função para adicionar os itens no array dos produtos registrados
 function buttonAddToRegister(batr) { // ao clicar no botao adicionar
     let test = batr.parentElement.parentElement.querySelector('p.name')
+
     if(isList(test.innerHTML) == true) {
         window.alert('This product is already registered!')
     } else {
