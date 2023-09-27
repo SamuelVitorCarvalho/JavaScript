@@ -99,7 +99,7 @@ function atualizar() {
 // função para saber se um produto já está registrado (para não registrar o msm produto 2 vezes!)
 function isList(text) {
 
-    let hasSome = productsRegistred.some((product) => {
+    let hasSome = productsRegistred.some((product) => { // arrow function
         return product.name == text
     })
     return hasSome
